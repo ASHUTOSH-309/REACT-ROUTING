@@ -6,22 +6,33 @@ import { Dashboard } from './pages/Dashboard'
 import { Landing } from './pages/Landing'
 
 function App() {
-  
+
 
   return (
     <>
-    <div style={{"background":"black", "color":"white"}}>
-      I am your header
-    </div>
-    <BrowserRouter>
-      <Routes>
+
+      <div style={{ "background": "black", "color": "white" }}>
+        I am your header
+      </div>
+      <div>
+        <button onClick={()=>{
+          window.location.href="/"
+        }}>Landing</button>
+
+        <button onClick={()=>{
+          window.location.href="/dashboard"
+
+        }} >Dashboard</button>
+      </div>
+      <BrowserRouter>
+        <Routes>
 
           <Route path={"/dashboard"} element={<Dashboard />} />
           <Route path={"/"} element={<Landing />} />
 
-      </Routes>
+        </Routes>
 
-    </BrowserRouter>
+      </BrowserRouter>
     </>
   )
 }
