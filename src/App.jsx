@@ -1,6 +1,6 @@
 
 
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom'
 
 import { Dashboard } from './pages/Dashboard'
 import { Landing } from './pages/Landing'
@@ -8,23 +8,14 @@ import { Landing } from './pages/Landing'
 function App() {
 
 
+
   return (
     <>
 
-      <div style={{ "background": "black", "color": "white" }}>
-        I am your header
-      </div>
-      <div>
-        <button onClick={()=>{
-          window.location.href="/"
-        }}>Landing</button>
 
-        <button onClick={()=>{
-          window.location.href="/dashboard"
 
-        }} >Dashboard</button>
-      </div>
       <BrowserRouter>
+        <AppBar />
         <Routes>
 
           <Route path={"/dashboard"} element={<Dashboard />} />
@@ -35,6 +26,18 @@ function App() {
       </BrowserRouter>
     </>
   )
+}
+
+
+function AppBar() {
+//useNavigate can only be used inside a component that is wrapped in Browser Router
+  const navigate = useNavigate()
+  return <div>
+    <div>
+      <button onClick={() => {navigate("/")}}>Landing</button>
+      <button onClick={() => {navigate("/dashboard")}} >Dashboard</button>
+    </div>
+  </div>
 }
 
 export default App
